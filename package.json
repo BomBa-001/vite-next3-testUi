@@ -12,6 +12,12 @@
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@nuxt/ui": "^2.9.0",
-    "nuxt": "^3.7.4"
+    "@pinia/nuxt": "0.5.1",
+    "nuxt": "^3.7.4",
+    "pinia": "2.1.7"
+  },
+  "dependencies": {
+    "sass": "1.69.5",
+    "sass-loader": "13.3.2"
   }
 }
