@@ -13,10 +13,10 @@
     "@nuxt/devtools": "latest",
     "@nuxt/ui": "^2.9.0",
     "@pinia/nuxt": "0.5.1",
+    "@vite-pwa/nuxt": "^0.1.0",
+    "nuxt-icon": "^0.6.7",
     "nuxt": "^3.7.4",
-    "pinia": "2.1.7"
-  },
-  "dependencies": {
+    "pinia": "2.1.7",
     "sass": "1.69.5",
     "sass-loader": "13.3.2"
   }
