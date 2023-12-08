@@ -14,6 +14,7 @@
     "@pinia/nuxt": "^0.5.1",
     "@typed/uuid": "^9.7.0",
     "@vite-pwa/nuxt": "^0.3.4",
+    "@nuxt/ui": "^2.11.0",
     "nuxt": "^3.8.2",
     "nuxt-icon": "^0.6.7",
     "pinia": "^2.1.7",

@@ -1,0 +1,332 @@
+
+
+@use "./normalize" as *;
+@use "./mixins" as *;
+
+
+//#region { Classes--Global }--------------------------------
+//![Startvar]----------------------------------------------------------------
+  $c-000000:#000000;
+  $c-999999:#999999;
+  $c-ffffff:#ffffff;
+//![End-var]----------------------------------------------------------------
+  //#region { text }
+    .user-select,
+    .unselect-text {
+      // -webkit-touch-callout: none !important;
+      -webkit-user-select: none !important;
+      -khtml-user-select: none !important;
+      -moz-user-select: none !important;
+      -ms-user-select: none !important;
+      user-select: none !important;
+    }
+    .color-select-text-trImp {
+      &::webkit-selection {
+        color: $c-000000 !important;
+        background-color: transparent !important;
+      }
+      &::moz-selection {
+        color: $c-000000 !important;
+        background-color: transparent !important;
+      }
+      &::ms-selection {
+        color: $c-000000 !important;
+        background-color: transparent !important;
+      }
+      &::selection {
+        color: $c-000000 !important;
+        background-color: transparent !important;
+      }
+    }
+    .color-select-text-tr {
+      &::webkit-selection {
+        background-color: transparent;
+      }
+      &::moz-selection {
+        background-color: transparent;
+      }
+      &::ms-selection {
+        background-color: transparent;
+      }
+      &::selection {
+        background-color: transparent;
+      }
+    }
+    .color-select-text-bg {
+      &::webkit-selection {
+        color: $c-ffffff;
+        background-color: $c-999999;
+      }
+      &::moz-selection {
+        color: $c-ffffff;
+        background-color: $c-999999;
+      }
+      &::ms-selection {
+        color: $c-ffffff;
+        background-color: $c-999999;
+      }
+      &::selection {
+        color: $c-ffffff;
+        background-color: $c-999999;
+      }
+    }
+    .color-select-text-bg-success {
+      &::webkit-selection {
+        color: $c-ffffff;
+        background-color: $c-success;
+      }
+      &::moz-selection {
+        color: $c-ffffff;
+        background-color: $c-success;
+      }
+      &::ms-selection {
+        color: $c-ffffff;
+        background-color: $c-success;
+      }
+      &::selection {
+        color: $c-ffffff;
+        background-color: $c-success;
+      }
+    }
+  //#endregion
+
+  //#region { flex }
+  .d-flex-r,
+  .flex-r {
+    @include d-flex(row, nowrap, center, center, center);
+    //! @include d-flex(row, nowrap, center, space-between, center);
+  }
+  .d-flex-c,
+  .flex-c {
+    @include d-flex(column, nowrap, center, center, center);
+    //! @include d-flex(row, nowrap, center, space-between, center);
+  }
+  //#endregion
+  
+  //#region { un-visibility - un-show  }
+  // .show,
+  .d-block {
+    display: block !important;
+  }
+  .d-i-block {
+    display: inline-block !important;
+  }
+  // .unshow,
+  .d-none {
+    display: none !important;
+  }
+  .visible,
+  .visibility,
+  .show {
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .un-visible,
+  .un-visibility,
+  .un-show {
+    visibility: hidden !important;
+    opacity: 0 !important;
+  }
+
+  //#endregion
+
+  //#region { img - Bicon - svg }
+  $Wfooter1-background: $c-000000-L40 url("./../../images/world-map.png")
+    no-repeat center;
+
+  .Bicon {
+    width: 46px;
+    height: 46px;
+    background: $c-999999;
+    border-radius: 50%;
+    transition: all 0.3s ease-in-out;
+    svg {
+      margin: 0px;
+      width: auto; //42px;
+      height: auto; //42px;
+      use,
+      path {
+        fill: darken($c-000000,40);
+      }
+      // path{fill:$c-000000;}
+    }
+    // svg{path{fill:$c-000000;}}
+  }
+  .BG-Black {
+    position: absolute;
+    display: none;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    background-color: $c-000000; //#ff000059;//
+  }
+
+  [dir="rtl"] {
+    .nicescroll-rails {
+      right: calc(100% - 6px) !important;
+    }
+    // svg,.svg,i.fa{
+    //   transform: rotateY(180deg);
+    // }
+  }
+  //#endregion
+
+  //#region { V-WNav }
+
+  //#endregion
+
+  //#region { RestBootstrap }
+
+  textarea {
+    // border: none !important;
+    outline: 0 !important;
+  }
+  .form-control:focus {
+    color: $c-000000 !important;
+    background-color: transparent !important;
+    border-color: transparent !important;
+    outline: 0 !important;
+    box-shadow: 0 0 0 0.2rem $c-000000-20 !important;
+  }
+  .modal-backdrop {
+    background-color: $c-ffffff-30 !important;
+    z-index: 90 !important;
+  }
+  .modal {
+    @extend .ScrollBar;
+    @extend .unselect-text;
+  }
+  .modal-content {
+    @extend .unselect-text;
+    color: $c-ffffff !important;
+    background-color: $c-999999 !important;
+    box-shadow: 1px 1px 20px $c-ffffff-20, -1px -1px 20px $c-ffffff-20 !important;
+    border: 1px solid $c-ffffff-20 !important;
+    h5 {
+      color: $c-ffffff-80 !important;
+    }
+  }
+  .close {
+    color: $c-ffffff !important;
+    text-shadow: 0 1px 0 $c-000000 !important;
+  }
+
+  [dir="rtl"] {
+    .was-validated .form-control:invalid,
+    .form-control.is-invalid {
+      padding-right: 0.75rem !important;
+      padding-left: calc(1.5em + 0.75rem) !important;
+      background-position: left calc(0.375em + 0.1875rem) center !important;
+    }
+  }
+  //#endregion
+
+  //#region { loading spinner }
+  .custom-class {
+    // $size: 10px;
+    // &.css-1cyd17z{margin: -5px auto;}
+    & div:first-child {
+      background-color: $c-000000 !important;
+    }
+    & div:last-child {
+      border-color: $c-999999 !important;
+      box-sizing: content-box !important;
+    }
+  }
+  //#endregion
+
+  .Bline-space {
+    //   كلاس لعمل خط فاصل تحت العناوين
+    width: 100%;
+    height: 1px;
+    background-image: linear-gradient(90deg, $c-ffffff, $c-000000-L80 30%);
+    position: absolute;
+    top: 35px;
+    left: 0;
+  }
+  [dir="rtl"] {
+    .Bline-space {
+      left: auto;
+      right: 0;
+    }
+  }
+
+  .ScrollBar,
+  .ScrollBar0 {
+    overflow: hidden !important;
+    &:hover {
+      overflow: auto !important;
+    }
+
+    &::-webkit-scrollbar {
+      // width: 6px;
+      max-width: 8px;
+      max-height: 8px;
+      position: absolute;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: linear-gradient(transparent, $c-text) !important;
+      border-radius: 5px;
+      &:hover {
+        background: linear-gradient(transparent, var(--CB-nav)) !important;
+      }
+    }
+    &::-webkit-scrollbar-track {
+      border-radius: 5px;
+      background-color: transparent;
+    }
+  }
+  .ScrollBar0 {
+    &::-webkit-scrollbar {
+      max-width: 0;
+      max-height: 0;
+    }
+  }
+  .cursor-no-drop {
+    cursor: no-drop !important;
+  }
+  .disabled {
+    @extend .cursor-no-drop;
+    pointer-events: none;
+    color: #aaa !important;
+    background: $c-000000 !important;
+    border-color: #aaa !important;
+  }
+
+  .Text-dirNumber-rtl,
+  .Text-dirNumber-rtl input {
+    text-align: start;
+  }
+  [dir="rtl"] {
+    .Text-dirNumber-rtl,
+    .Text-dirNumber-rtl input {
+      text-align: end !important;
+      direction: ltr !important;
+    }
+  }
+
+  //#region { V-WNav }
+  // $nav-height:                         70px;
+  // @include mq-is(1){
+  //   $nav-height:65px;
+  //   $font-size:14px;
+  // }
+  // @include mq-is(2){
+  //   $nav-height:65px;
+  //   $font-size:10px;
+  // }
+  // @include mq-is(3){
+  //   $nav-height:65px;
+  //   $font-size:8px;
+  // }
+  //#endregion
+  //#region { @extend }
+  // @extend .cursor-no-drop;
+  // @extend .unselect-text;
+  // @extend .ScrollBar;
+
+  // [dir=rtl]{}
+  //#endregion
+
+//#endregion

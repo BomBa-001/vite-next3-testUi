@@ -1,0 +1,131 @@
+//@ @include ??? {}          <- طريقة إستدعاء الميكسين
+
+//#region { Color }
+
+  //@ لتحويل اللون الي hsla       -->https://www.sassmeister.com/
+  //@ @include chsl() {};
+  @mixin chsl($name,$color){
+    /*-- #{$name} -- #{$color} --*/
+  $h: hue($color); $s: saturation($color); $l: lightness($color);
+  --c#{$name}-h: #{$h};--c#{$name}-s: #{$s};--c#{$name}-l:#{$l};
+  --c#{$name}-hsl: #{$h},#{$s},#{$l};--c#{$name}:hsl(#{$h},#{$s},#{$l});
+  }
+  // @ @include gc_hsl() {};
+  @mixin gc_hsl($color:('10':#333,'30':#ff237d,'60':#ede)){
+    :root{
+        @each $k,$v in $color {
+            @include chsl($k,$v);
+        }
+    }
+    :root:has(.checkbox:checked),
+    .dark{
+        @each $k,$v in $color {
+            @include chsl($k,invert($v));
+        }
+    // :invert(#000);//دالة لجلب اللون المعاكس
+    }
+  }
+  // run mixin to working
+  // @include gc_hsl();
+
+//#endregion
+
+//#region { flex }
+//* @include d-flex() {};
+@mixin d-flex(
+  $direction: row,
+  $wrap: nowrap,
+  $alignC: center,
+  $justify: start,
+  $alignI: center,
+  $gap: 0
+) {
+  display: flex;
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+  align-content: $alignC;
+  justify-content: $justify;
+  align-items: $alignI;
+  gap: $gap;
+}
+@mixin d-i-flex(
+  $direction: row,
+  $wrap: nowrap,
+  $alignC: center,
+  $justify: start,
+  $alignI: center,
+  $gap: 0
+) {
+  @include d-flex($direction, $wrap, $alignC, $justify, $alignI, $gap) {
+    display: inline-flex;
+  }
+}
+//#endregion
+
+//#region { round-box }
+@mixin round-box($size: rem(40), $bg-color: $BC-actiev) {
+  padding: ($size/2);
+  height: $size;
+  background-color: $bg-color;
+  border: none;
+  list-style: none;
+  border-radius: ($size/2);
+}
+//#endregion
+
+// #region ----------[ media_for ]----------
+//   @include media_for(m d) {height:70px;}
+$size__tablet_content_width: 990px;
+$media_queries0: (
+  /* mobile */ "mm": "only screen and (min-width: 240px) and (max-width: 667px)",
+  /* mobile */ "m": "only screen and (max-width: 667px)",
+  /* tablet */ "t":
+    "only screen and (min-width: 667px) and (max-width: #{$size__tablet_content_width})",
+  /* desktop */ "d":
+    "only screen and (min-width: (#{$size__tablet_content_width + 1}))",
+  /* retina2 */ "r1":
+    "only screen and (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi)",
+  /* retina3 */ "r2":
+    "only screen and (-webkit-min-device-pixel-ratio: 3) and (min-resolution: 288dpi)",
+  /* landscape */ "l": "screen and (orientation:landscape) ",
+  /* portrait */ "p": "screen and (orientation:portrait) "
+);
+$media_queries: (
+  /* mobile */ "mm": "only screen and (240px <= width <= 667px)",
+  /* mobile */ "m": "only screen and (width <= 667px)",
+  /* tablet */ "t":
+    "only screen and (667px <= width <= #{$size__tablet_content_width})",
+  /* desktop */ "d":
+    "only screen and (width <= #{$size__tablet_content_width })",
+  /* retina2 */ "r1":
+    "only screen and (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi)",
+  /* retina3 */ "r2":
+    "only screen and (-webkit-min-device-pixel-ratio: 3) and (min-resolution: 288dpi)",
+  /* landscape */ "l": "screen and (orientation:landscape) ",
+  /* portrait */ "p": "screen and (orientation:portrait) "
+);
+@mixin media_for($ls, $landscape: false, $MStr: "") {
+  $conditions: ();
+  @if ($landscape) {
+    $MStr: $MStr + " and (orientation: landscape)";
+  } //' and (orientation:portrait)'
+
+  @each $i in $ls {
+    $conditions: append(
+      $conditions,
+      #{map-get($media_queries, $i) + #{$MStr}},
+      comma
+    );
+  }
+  // @each $l in $ls {$conditions: append($conditions,#{inspect(map-get($media_queries, $l))},comma);}
+  // @if($conditions){}@else{$conditions:('only screen and (max-width: 667px)');}
+  @media #{$conditions} {
+    @content;
+  }
+}
+@mixin media($conditions) {
+  @media (#{$conditions}) {
+    @content;
+  }
+}
+// #endregion

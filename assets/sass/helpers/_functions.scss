@@ -1,0 +1,57 @@
+// دالة تحويل لــ px to rem
+@function px($n) {
+  @return calc($n / 16) + rem;
+}
+@function rem($n) {
+  @return calc($n * 16) + px;
+}
+@function em($n) {
+  @return #{$n / 16}em;
+}
+
+// دالة تغميق اللون
+@function Color-D($Color, $N) {
+  @return darken($Color, $N);
+}
+// دالة تفتيح اللون
+@function Color-L($Color, $N) {
+  @return lighten($Color, $N);
+}
+
+// لتحويل اللون الي hsla
+@function hslac($color, $alpha:1) {
+  @if(type-of($color) == "color") {
+    @return hsla(hue($color), saturation($color), lightness($color), $alpha);
+  }
+  @else {
+    @error "You didn't pass a color object";
+  }
+}
+// --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+@function chsla($c,$h:1,$s:1,$l:1,$a:1) {
+  @if ($c){
+    @return hsla(
+      calc(var(--#{$c}-h) * #{$h}),
+      calc(var(--#{$c}-s) * #{$s}),
+      calc(var(--#{$c}-l) * #{$l})
+      ,$a);
+  }
+  @else {@return #000;}
+}
+//
+// @function d-flex($display: flex,$direction: row,$wrap: nowrap,$alignC: center,$justify: space-between,$alignI: center) {
+//   @if ($display== flex) {display: -webkit-box;display: -moz-box;display: -ms-flexbox;display: -webkit-flex;display: flex;
+//   }@else{display: -webkit-inline-box;display: -moz-inline-box;display: -webkit-inline-flex;display: -ms-inline-flexbox;display: inline-flex;}
+//   flex-direction: $direction;
+//   flex-wrap: $wrap;
+//   align-content: $align;
+//   justify-content: $justify;
+//   align-items: $alignI;
+// }
+/*
+--
+-- lighten($Color, $Num);        => دالة تستخدم للتفتيح
+-- darken($Color, $Num);         => دالة تستخدم للتغميق اللون
+-- complement($Color);           => دالة تستخدم لجلب اقرب لون منسب
+--
+*/

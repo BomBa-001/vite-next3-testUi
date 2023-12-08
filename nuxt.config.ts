@@ -1,12 +1,29 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   pages: true,
+  css: ["@/assets/sass/style.scss"],
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@use "@/assets/sass/helpers/_helpers.scss" as *;',
+          // additionalData: '@use "@/assets/scss/_var.scss" as *;',
+        },
+      },
+    },
+  },
   modules: [
     "nuxt-icon",
-    // "@nuxt/ui",
+    "@nuxt/ui",
     "@pinia/nuxt",
-    "@vite-pwa/nuxt"
+    "@vite-pwa/nuxt",
+    '@nuxtjs/tailwindcss'
   ],
+  // tailwindcss: {
+  //   exposeConfig: true,
+  //   viewer: true,
+  //   // and more...
+  // },
   // --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
   pwa: {
     manifest: {
