@@ -36,8 +36,8 @@ const sleep = (t) =>
     setTimeout(res, t);
   });
 
-const date = (d = "1991/12/05") =>
-  new Date(d).toLocaleString("ar-eg", {
+const date = (d = new Date(),lang = "ar-eg") =>
+  new Date(d).toLocaleString(lang, {
     year: "numeric",
     month: "2-digit",
     day: "2-digit",
@@ -47,7 +47,7 @@ const date = (d = "1991/12/05") =>
     minute: "2-digit",
     second: "2-digit",
   });
-
+console.log("Update:",date(new Date(),'en'));
 const ui = /*ui*/ {
   background: "bg-white dark:bg-slate-900",
 };

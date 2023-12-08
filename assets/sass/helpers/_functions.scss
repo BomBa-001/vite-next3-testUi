@@ -1,3 +1,7 @@
+
+@function cn($n,$v:--px) {
+  @return calc(var($v) * $n);
+}
 // دالة تحويل لــ px to rem
 @function px($n) {
   @return calc($n / 16) + rem;

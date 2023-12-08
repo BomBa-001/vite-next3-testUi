@@ -132,7 +132,7 @@
     //! @include d-flex(row, nowrap, center, space-between, center);
   }
   //#endregion
-  
+
   //#region { un-visibility - un-show - disabled }
   // .show,
   .d-block {
@@ -238,6 +238,8 @@
       background-position: left calc(0.375em + 0.1875rem) center !important;
     }
   }
+
+
   //#endregion
 
   //#region { scrollbar }
@@ -246,7 +248,7 @@
     --max-w:8px;--max-h:8px;--b-r:5px;
     --c-text:$c10;--bg-nav:$c60;
     $max-w:var(--max-w);$max-h:var(--max-h);$b-r:var(--b-r);$c-text:var(--c-text);$bg-nav:var(--bg-nav);
-    
+
   &,&0 {
     overflow: hidden !important;
     &:hover {
@@ -296,3 +298,9 @@
   //#endregion
 
 //#endregion
+
+.container{
+  margin: 0 auto;
+  // padding: 0 20px;
+  max-width: 1200px;
+}
