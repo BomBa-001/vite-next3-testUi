@@ -69,7 +69,11 @@
       color: $c30;
         font-size: 800%;
 
-        text-shadow: 0 0 50px #0f0, 0 0 100px #0f0, 0 0 150px #0f0, 0 0 200px #0f0, 0 0 250px #0f0,;
+        text-shadow: 0 0 50px var(--csuccess),
+                    0 0 100px var(--csuccess),
+                    0 0 150px var(--csuccess),
+                    0 0 200px var(--csuccess),
+                    0 0 250px var(--csuccess),;
         animation: animate 5s linear infinite;
       }
 
@@ -85,5 +89,5 @@
     filiter: hue-rotate(360deg);
     -webkit-filter: hue-rotate(360deg);
   }
-};
+}
 </style>

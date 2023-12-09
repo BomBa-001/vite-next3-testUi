@@ -124,7 +124,7 @@ $media_queries: (
   }
 }
 @mixin media($conditions) {
-  @media (#{$conditions}) {
+  @media #{$conditions} {
     @content;
   }
 }
