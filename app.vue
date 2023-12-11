@@ -14,8 +14,17 @@
     </loadingScreen>
 
     <AuthLayout v-if="!isloading">
-      <NuxtPage/>
     </AuthLayout>
+    <NuxtPage/>
+
+
+    <!-- يوجد شرح لزيز ومفصل عن الروت
+      https://www.youtube.com/watch?v=ukJD3Tbn9RU&ab_channel=GeekyShows
+
+
+      <NuxtLink to="/">Home</NuxtLink>
+      <NuxtLink to="about">About</NuxtLink>
+    -->
   </div>
 </template>
 
@@ -26,7 +35,7 @@ import { ref, onMounted } from "vue";
 
 let isloading = ref(true);
 
-// todo إرسال هذه المعادلات إلي ملف BomBaJS
+// todo إرسال هذه المعادلات إلي ملف setingGlobale.js
   const sleep = (t) =>new Promise((res, rej) => {setTimeout(res, t);});
   const date = (d = new Date(),lang = "ar-eg") =>
     new Date(d).toLocaleString(lang, {
@@ -43,12 +52,14 @@ let isloading = ref(true);
 
 
 onMounted(async (e) => {
-  console.log("Update:",date(new Date(),'en'));//!todo deleted
+  try {
+    console.log("Update:",date(new Date(),'en'));//!todo deleted
 
-  await sleep(1000);
-  lastName.value = "Hussein abdo";
-  console.log(date(new Date()).toString() + `:`, "BomBa 4ever...☺");//!todo deleted
-  isloading.value = false;
+    // await sleep(10000);
+    console.log(date(new Date()).toString() + `:`, "BomBa 4ever...☺");//!todo deleted
+    isloading.value = false;
+  } catch (error) {console.error(`catch error--(onMounted):`,error);}
+
 });
 </script>
 

@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  pages: true,
+  // pages: true,
   css: ["@/assets/sass/style.scss"],
   vite: {
     css: {

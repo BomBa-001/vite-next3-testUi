@@ -35,7 +35,7 @@
     </svg> -->
 
 
-    <slot/>
+    <slot />
   </div>
 </template>
 

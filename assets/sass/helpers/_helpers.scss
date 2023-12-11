@@ -304,3 +304,49 @@
   // padding: 0 20px;
   max-width: 1200px;
 }
+.content{
+  margin-block-start: 32px;
+  width: 100%;
+  height: 100%;
+  @extend .d-flex-c;
+  justify-content: start;
+}
+.card {
+  $br: cn(8);
+  $title_font-size: cn(32);
+  $body-bg:$c60;
+  $ch1-hover:chsla(c10, $a:0.4);
+  $cbox-shadow:chsla(c10, $a:0.2);
+
+  margin: cn(16);
+  padding: cn(8);
+  padding-block-start: $title_font-size;
+
+  // width: calc(100vw - (1rem * 3));
+  width: fit-content;
+  height: fit-content;
+
+  border-radius: $br;
+  box-shadow: 0rem cn(4.8) cn(16) $cbox-shadow;
+  position: relative;
+
+  .title {
+    padding-inline: cn(10);
+    background-color: $body-bg;
+    font-size: $title_font-size;
+    font-weight: 600;
+    color: $cbox-shadow;
+    border-radius: $br;
+    position: absolute;
+    inset-block-start: calc($title_font-size / -2);
+    inset-inline-start: cn(16);
+    cursor: no-drop;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      color: $ch1-hover;
+    }
+
+    // box-shadow: 0rem 0.3rem 1rem $cbox-shadow;
+  }
+}

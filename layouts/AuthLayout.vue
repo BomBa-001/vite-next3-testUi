@@ -1,10 +1,10 @@
 <template>
-  <!-- <c_header /> -->
+  <c_header />
   <slot/>
 </template>
 
 <script setup lang="ts">
-  // import c_header from "@/layouts/header/c-header.vue";
+  import c_header from "@/layouts/header/c-header.vue";
 </script>
 
 

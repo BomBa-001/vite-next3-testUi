@@ -1,7 +1,9 @@
 <template>
+  <!-- <h1>{{ openNavMenu }}</h1> -->
+
   <header>
     <article class="container">
-      <a href="#" class="logo">
+      <NuxtLink to="/" class="logo">
       <!-- <img src="https://ik.imagekit.io/BomBa001/Image/tr:w-32/B0.png" alt="" /> -->
 
       <svg
@@ -31,21 +33,20 @@
       </svg>
 
       <p>Ramadan</p>
-    </a>
+    </NuxtLink>
     <nav>
       <ul :class="[openNavMenu && 'd-block']">
-        <li style="--i: 1" class="active"><a href="#">Home</a></li>
-        <li style="--i: 2"><a href="#">About</a></li>
-        <li style="--i: 3"><a href="#">Calender</a></li>
-        <li style="--i: 4"><a href="#">Blog</a></li>
-        <li style="--i: 5"><a href="#">Contact</a></li>
+        <li style="--i: 1"><NuxtLink activeClass="active" to="/">Home</NuxtLink></li>
+        <li style="--i: 2"><NuxtLink activeClass="active" to="/About">About</NuxtLink></li>
+        <li style="--i: 3"><NuxtLink activeClass="active" to="/Calender">Calender</NuxtLink></li>
+        <li style="--i: 4"><NuxtLink activeClass="active" to="/Blog">Blog</NuxtLink></li>
+        <li style="--i: 5"><NuxtLink activeClass="active" to="/Contact">Contact</NuxtLink></li>
       </ul>
       <i class="btn0 fa-solid" @click="(e) => (openNavMenu = !openNavMenu)"></i>
       <!-- <i :class=["show"] @click="(e) =>openNavMenu = !openNavMenu;"></i> -->
     </nav>
     </article>
   </header>
-  <h1>{{ openNavMenu }}</h1>
 </template>
 
 <script setup>
@@ -145,12 +146,18 @@ header {
           cursor: pointer;
           margin: 0 (3 * $px);
           padding: (8 * $px) (18 * $px);
-          @include media_for(t) {
-            padding: (8 * $px) (10 * $px);
-          }
+          @include media_for(t) {padding: (8 * $px) (10 * $px);}
           border-radius: (40 * $px);
           box-shadow: $px $px (5 * $px) $c10-20;
           background-color: $c60;
+
+
+          /*#region ----------[ animation ]---------- */
+          opacity: 1;
+          animation: slide_block-end $t-05s linear forwards
+            calc($t-02s * var(--i));
+          /*#endregion*/
+
 
           &:hover {
             transition: all $t-03s ease-in-out;
@@ -161,21 +168,10 @@ header {
             font-size: 105%;
             font-weight: 600;
           }
-
-          /*#region ----------[ animation ]---------- */
-          opacity: 1;
-          animation: slide_block-end $t-05s linear forwards
-            calc($t-02s * var(--i));
-          /*#endregion*/
+          &:hover,&:has(.active) {background-color: $c30;a {color: $c60;}}
         }
 
-        & li:hover,
-        .active {
-          background-color: $c30;
-          a {
-            color: $c60;
-          }
-        }
+
 
         @extend %navUlShow;
       }
