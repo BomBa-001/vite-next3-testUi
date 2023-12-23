@@ -1,7 +1,8 @@
 <template>
-  <div>
+  <section class="content">
+
     <h1>PaGe: HOME</h1>
-    <hr />
+
     <UButton
       :icon="ssg.isDark ? 'i-heroicons-moon-20-solid' : 'i-heroicons-sun-20-solid'"
       color="gray"
@@ -9,6 +10,7 @@
       aria-label="Theme"
       @click="ssg.isDark = !ssg.isDark"
     />
+
     <UToggle
     on-icon="i-heroicons-moon-20-solid"
     off-icon="i-heroicons-sun-20-solid"
@@ -18,14 +20,16 @@
     />
 
     <h1>welcome {{ lastName }}</h1>
+
     <UButton
       :label="(isloading && `Loading...`) || `Don...`"
       :loading="isloading"
       :disabled="isloading"
       @click="btn__click()"
     />
+
     <UCard />
-  </div>
+  </section>
 </template>
 
 <script setup>

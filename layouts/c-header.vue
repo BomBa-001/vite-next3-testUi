@@ -215,7 +215,7 @@ header {
 
 %navUlShow {
   @include media_for(mm t) {
-    // display: none;
+    display: none;
 
     position: absolute;
     padding: (30 * $px)/*  (10 * $px) */;
