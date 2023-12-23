@@ -43,43 +43,46 @@
 * {@extend .user-select;}
 body{
   font-size: cn(16);
-  @include media('screen and (width < 600px )'){font-size: cn(10);}
+  @include media_for(m t) {font-size: px(14);}
+  @include media_for(m) {font-size: px(10);} /* @include media('screen and (width < 600px )'){font-size: cn(10);} */
   @include media('screen and (width < 240px ) and (orientation:portrait),screen and (height < 300px)')
   {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
-
-    width: 100vw;height: 100vh;
-    background-color: var(--cdanger);
-
     --textResponse:'Sorry, this application does not work on these devices';
     // [dir="rtl"] & {background-color: var(--cinfo); --textResponse:'ناسف هذا التطبيق لا يعمل علي هذه الاجهزة';}
 
-    .app,#app{display: none;}
+    .app,#app,.__nuxt,#__nuxt{
+      *{display: none !important;}
 
-    ::after{
-      content: var(--textResponse);
-      display: block;
-      margin: 0 auto;
-      width: 80%;
+      padding: 0 10%;
       color: var(--cwarning);
       text-align: center;
       font-size: 300%;
+      line-height: 150%;
+      background-color: var(--cdanger);
+      
+      justify-content: center;
     }
+    ::after{content: var(--textResponse);}
   }
 }
-.app{
+.app,#__nuxt{
   width: 100vw;
-  height: 100vh;  // @include media('width < 240px'){font-size: cn(8);}
+  height: 100dvh;  // @include media('width < 240px'){font-size: cn(8);}
   // background-color: rgb(255, 215, 215);//var(--c60);
+  color:var(--c10);
   background-color:var(--c60);
   @extend .d-flex-c;
   justify-content: start;
 
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -92,7 +95,8 @@ https://www.youtube.com/watch?v=Up_e2rGdMd8&ab_channel=WPAcademy
 /*
 00- [x] تحجيم مقاس شاشات العمل اللتي سيعمل عليها المشروع              -->
 00- [ ] الإنتهاء من التصميم              -->
-    00- [ ] ضبط مشكلة الروتر عد الذهاب من خلال الرابط مباشرتاً              -->
+    00- [x] ضبط مشكلة الروتر عد الذهاب من خلال الرابط مباشرتاً              -->
+    00- [ ] ضبط تصصميم انتجيل بيدج - صفحات الهبوط              -->
     00- [ ] ضبط اللغات في التصميم من الإجنبى إلي العربي              -->
 00- [ ] الإنتهاء من البنية التحتية              -->
 */

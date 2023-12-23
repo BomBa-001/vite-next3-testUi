@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  // pages: true,
+  pages: true,
   css: ["@/assets/sass/style.scss"],
   vite: {
     css: {
@@ -15,10 +15,13 @@ export default defineNuxtConfig({
   modules: [
     "nuxt-icon",
     "@nuxt/ui",
-    "@pinia/nuxt",
+    ["@pinia/nuxt",{autoImports:['settingsGlobal']}/* لتسهيل عملية الإستيراد المخاذن */],
+    "@pinia-plugin-persistedstate/nuxt",
     "@vite-pwa/nuxt",
     '@nuxtjs/tailwindcss'
   ],
+  imports: { dirs: ["stores"] }/* يتم استخدامها لتسهيل عملية الوصول إلي مخاذن pinia */,
+
   // tailwindcss: {
   //   exposeConfig: true,
   //   viewer: true,
@@ -45,7 +48,7 @@ export default defineNuxtConfig({
       ],
     },
     devOptions: {
-      enabled: true,
+      enabled: false,
       type: "module",
     },
   },

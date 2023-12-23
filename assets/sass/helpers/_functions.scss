@@ -42,6 +42,15 @@
   }
   @else {@return #000;}
 }
+@function rhsla($c,$h:var(--#{$c}-h),$s:var(--#{$c}-s),$l:var(--#{$c}-l),$a:1) {
+  @if ($c){
+    // @if ($h){$h:var(--#{$c}-h)}
+    // @if ($s){$s:var(--#{$c}-s)}
+    // @if ($l){$l:var(--#{$c}-l)}
+    @return hsla(#{$h},#{$s},#{$l},$a);
+  }
+  @else {@return #000;}
+}
 //
 // @function d-flex($display: flex,$direction: row,$wrap: nowrap,$alignC: center,$justify: space-between,$alignI: center) {
 //   @if ($display== flex) {display: -webkit-box;display: -moz-box;display: -ms-flexbox;display: -webkit-flex;display: flex;

@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-//@ Components:
+//@ import Components:
 import bhr from "@/components/BUI/bhr";
 import { ref } from "vue";
 
